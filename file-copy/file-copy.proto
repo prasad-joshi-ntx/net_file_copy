@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option go_package = "./file-copy";
+option java_multiple_files = true;
+option java_package = "io.grpc.fileCopy";
+option java_outer_classname = "FileCopyProto";
+
+package filecopy;
+
+service FileCopy {
+        rpc Write(WriteArgs) returns (WriteResponse) {}
+}
+
+message WriteArgs {
+        string file_name = 1;
+        string data = 2;
+        int64 offset= 3;
+}
+
+message WriteResponse {
+        int64 byes_copied = 1;
+        int32 error = 2;
+}
+
